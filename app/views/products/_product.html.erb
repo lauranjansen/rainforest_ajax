@@ -1,6 +1,6 @@
 <tr>
-	<td><%= product.name %></td>
-	<td><%= product.description %></td>
+	<td><%= link_to product.name, product_path(product) %></td>
+	<td><%= link_to truncate(product.description, length: 100), product_path(product) %></td>
 	<td>$<%= product.formatted_price %></td>
 	<td><%= link_to "Show", product_path(product) %> |
 		<%= link_to "Edit", edit_product_path(product) %> |

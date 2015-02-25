@@ -1,16 +1,18 @@
 <h1>Products</h1>
 
+<%= form_tag products_path, method: :get, authentication: false, id: 'search_form' do %>
+	<%= text_field_tag :search, params[:search] %>
+	<%= submit_tag "Search" %>
+<% end %>
+
 <div class="products">
 	<table class="table">
-		<tr>
-			<td>Name</td>
-			<td>Description</td>
-			<td>Price</td>
-			<td>Actions</td>
-		</tr>
-		
-		<%= render @products %>
-
+		<thead>
+			<%= render 'header' %>
+		</thead>
+		<tbody id="products">
+			<%= render @products %>
+		</tbody>
 	</table>
 </div>
 
