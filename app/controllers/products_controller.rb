@@ -1,13 +1,14 @@
 class ProductsController < ApplicationController
   def index
   	@products = if params[:search]
-      Product.where("name ILIKE ?", "%#{params[:search]}%")
+      Product.where("name ILIKE ?", "%#{params[:search]}%").order('products.created_at DESC').page(params[:page])
     else
-      Product.all
+      Product.order('products.created_at DESC').page(params[:page])
     end
 
-    if request.xhr?
-      render @products
+    respond_to do |format|
+      format.js
+      format.html
     end
   end
 

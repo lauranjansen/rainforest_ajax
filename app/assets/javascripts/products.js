@@ -10,9 +10,7 @@ $(document).on('ready page:load', function() {
 		$.ajax({
 			url: '/products?search=' + searchValue,
 			type: 'GET',
-			dataType: 'html'
-		}).done(function(data){
-			$('#products').html(data);
+			dataType: 'script'
 		});
 	});
 
